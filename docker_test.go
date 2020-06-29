@@ -14,7 +14,7 @@ import (
 
 func TestTerraformDocker(t *testing.T) {
 	terraformOptions := &terraform.Options{
-		TerraformDir: "../my-container-test",
+		TerraformDir: "../terratest-docker",
 	}
 
 	// executes terraform destroy after creating
