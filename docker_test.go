@@ -12,6 +12,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const url string = "http://localhost"
+
 func TestTerraformDocker(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../terratest-docker",
@@ -23,10 +25,10 @@ func TestTerraformDocker(t *testing.T) {
 	// executes terraform init and apply to check containers
 	terraform.InitAndApply(t, terraformOptions)
 	fmt.Println("Sleeping for 10 seconds...")
-	time.Sleep(10 * time.Second)
+	time.Sleep(20 * time.Second)
 
 	// makes an http request to the docker container
-	resp, err := http.Get("http://localhost")
+	resp, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
